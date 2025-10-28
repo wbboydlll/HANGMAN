@@ -44,5 +44,7 @@ function updatePage() {
     image.src = "images/hangman" + guess_count + ".gif";
 }
 
+document.getElementById("guesses").textContent = "🎉 Congratulations! You guessed the word!";
+document.getElementById("guesses").textContent = `💀 You lost! The word was '${selectedWord}'.`;
 
 
