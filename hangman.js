@@ -52,3 +52,4 @@ if (gameOver) {
     return;
 }
 
+input.value = ""; // clears the input box after each guess
