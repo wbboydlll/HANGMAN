@@ -53,3 +53,8 @@ if (gameOver) {
 }
 
 input.value = ""; // clears the input box after each guess
+
+if (!selectedWord) {
+    document.getElementById("guesses").textContent = "Please start a new game before guessing.";
+    return;
+}
