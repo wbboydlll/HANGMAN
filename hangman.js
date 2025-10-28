@@ -58,3 +58,8 @@ if (!selectedWord) {
     document.getElementById("guesses").textContent = "Please start a new game before guessing.";
     return;
 }
+
+if (guessedLetters.includes(letter)) {
+    document.getElementById("guesses").textContent = `You already guessed '${letter}'. Try a different letter.`;
+    return;
+}
