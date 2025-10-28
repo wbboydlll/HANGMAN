@@ -47,4 +47,8 @@ function updatePage() {
 document.getElementById("guesses").textContent = "🎉 Congratulations! You guessed the word!";
 document.getElementById("guesses").textContent = `💀 You lost! The word was '${selectedWord}'.`;
 
+if (gameOver) {
+    document.getElementById("guesses").textContent = "The game is over. Please start a new game.";
+    return;
+}
 
