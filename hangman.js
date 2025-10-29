@@ -3,14 +3,14 @@ var POSSIBLE_WORDS = ["obdurate", "verisimiltude", "defenestrate", "obsequious",
 var MAX_GUESSES = 6;
 var word = "";
 var guesses = "";
-var guess_const = MAX_GUESSES;
+var guess_count = MAX_GUESSES;
 
 function newGame() {
     var randomIndex = parseInt(Math.random() * POSSIBLE_WORDS.length);
-    var word = POSSIBLE_WORDS[randomIndex];
+    word = POSSIBLE_WORDS[randomIndex];
     guesses = "";
     guess_count = MAX_GUESSES;
-    updatepage();
+    updatePage();
 }
 function guessLetter() {
     var input = document.getElementById("guess");
@@ -18,7 +18,7 @@ function guessLetter() {
     if (word.indexOf(letter) < 0) {
         guess_count--;
     }
-    guesses +- letter;
+    guesses += letter;
     updatePage();
 }
 function updatePage() {
@@ -43,23 +43,9 @@ function updatePage() {
     var image = document.getElementById("hangmanImage");
     image.src = "images/hangman" + guess_count + ".gif";
 }
-
-document.getElementById("guesses").textContent = "Congratulations! You guessed the word!";
-document.getElementById("guesses").textContent = `You lost! The word was '${selectedWord}'.`;
-
-if (gameOver) {
-    document.getElementById("guesses").textContent = "The game is over. Please start a new game.";
-    return;
+function guessLetter() {
+    var input = document.getElementById("guess");
+    var letter = input.value.toLowerCase();
+    input.value = ""; // clear input each time
 }
 
-input.value = ""; // clears the input box after each guess
-
-if (!selectedWord) {
-    document.getElementById("guesses").textContent = "Please start a new game before guessing.";
-    return;
-}
-
-if (guessedLetters.includes(letter)) {
-    document.getElementById("guesses").textContent = `You already guessed '${letter}'. Try a different letter.`;
-    return;
-}
