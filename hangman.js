@@ -59,3 +59,13 @@ if (guesses.includes(letter)){
     return;
 }
 
+if (word.indexOf(letter) < 0) {
+        guess_count--;
+        document.getElementById("guesses").textContent =
+            ` '${letter}' is not in the word.`;
+    } else {
+        document.getElementById("guesses").textContent =
+            ` Good guess! '${letter}' is in the word.`;
+    }
+    guesses += letter;
+    updatePage();
