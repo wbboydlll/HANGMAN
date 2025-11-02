@@ -49,3 +49,8 @@ function guessLetter() {
     input.value = ""; // clear input each time
 }
 
+if (!word){
+    document.getElementById("guesses").textContent = "Start a new game before guessing."
+    return;
+}
+
