@@ -69,3 +69,14 @@ if (word.indexOf(letter) < 0) {
     }
     guesses += letter;
     updatePage();
+
+let allFound = true;
+for (let i = 0; i < word.length; i++){
+    if(!guesses.includes(word[i])) allFound = false;
+}
+if (allFound){
+    document.getElementById("guesses").textContent = "Congrats on getting the Word!";
+    gameOver = true;
+    return;
+}
+
