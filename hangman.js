@@ -43,23 +43,28 @@ function updatePage() {
     var image = document.getElementById("hangmanImage");
     image.src = "images/hangman" + guess_count + ".gif";
 }
+
 function guessLetter() {
     var input = document.getElementById("guess");
     var letter = input.value.toLowerCase();
     input.value = ""; // clear input each time
-}
 
-if (!word){
-    document.getElementById("guesses").textContent = "Start a new game before guessing."
-    return;
-}
+    // stop guessing before a new game
+    if (!word) {
+        document.getElementById("guesses").textContent =
+            " Please start a new game before guessing.";
+        return;
+    }
 
-if (guesses.includes(letter)){
-    document.getElementById("guesses").textContext = `You already guessed '${letter}' try another letter.`;
-    return;
-}
+    // prevent duplicate guesses
+    if (guesses.includes(letter)) {
+        document.getElementById("guesses").textContent =
+            ` You already guessed '${letter}'. Try another letter.`;
+        return;
+    }
 
-if (word.indexOf(letter) < 0) {
+    // record and check guess
+    if (word.indexOf(letter) < 0) {
         guess_count--;
         document.getElementById("guesses").textContent =
             ` '${letter}' is not in the word.`;
@@ -70,17 +75,22 @@ if (word.indexOf(letter) < 0) {
     guesses += letter;
     updatePage();
 
-let allFound = true;
-for (let i = 0; i < word.length; i++){
-    if(!guesses.includes(word[i])) allFound = false;
-}
-if (allFound){
-    document.getElementById("guesses").textContent = "Congrats on getting the Word!";
-    gameOver = true;
-    return;
-}
+    // win check
+    let allFound = true;
+    for (let i = 0; i < word.length; i++) {
+        if (!guesses.includes(word[i])) allFound = false;
+    }
+    if (allFound) {
+        document.getElementById("guesses").textContent =
+            " Congratulations! You guessed the word!";
+        gameOver = true;
+        return;
+    }
 
-if (guess_count <=0){
-    document.getElementById("guesses").textContent = `You lost, the word was '${word}'.`;
-    gameOver = true;
+    // lose check
+    if (guess_count <= 0) {
+        document.getElementById("guesses").textContent =
+            ` You lost! The word was '${word}'.`;
+        gameOver = true;
+    }
 }
