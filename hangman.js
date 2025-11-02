@@ -54,3 +54,8 @@ if (!word){
     return;
 }
 
+if (guesses.includes(letter)){
+    document.getElementById("guesses").textContext = `You already guessed '${letter}' try another letter.`;
+    return;
+}
+
