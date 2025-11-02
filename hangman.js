@@ -80,3 +80,7 @@ if (allFound){
     return;
 }
 
+if (guess_count <=0){
+    document.getElementById("guesses").textContent = `You lost, the word was '${word}'.`;
+    gameOver = true;
+}
